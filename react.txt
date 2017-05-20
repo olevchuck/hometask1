@@ -1,3 +1,9 @@
+Если вы спросите меня, что я думал о React два месяца назад, я бы сказал…
+Где мои шаблоны? Что этот сумасшедший HTML делает в моем JavaScript? JSX выглядит странно! Скорее! Сжечь это!
+Это потому, что я его не понял.
+
+Но я уверяю, React — это определенно правильный путь. Пожалуйста, выслушайте меня
+
 Старый добрый MVC
 
 Корень зла в интерактивном приложении — это управление состоянием. «Традиционный» подход — MVC архитектура или некоторые ее вариации.
@@ -24,31 +30,7 @@ Data binding — это возможность держать ваши модель и представления синхронизиров
 
 Это достигается через возможность объявить зависимости между кусками данных в вашем приложении. Изменения в состоянии будут распространяться по всему приложению и все зависимости обновятся автоматически.
 
-Давайте посмотрим, как это работает на практике в некоторых известных фреймворках.
 
-Knockout
-
-Knockaut выступает за MVVM (Model-View-ViewModel) подход и помогает реализовать часть View:
-
- // View (a template)
-<p>First name: <input data-bind="value: firstName" /></p>  
-<p>Last name: <input data-bind="value: lastName" /></p>  
-<h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
-
-// ViewModel (diplay data... and logic?)
-var ViewModel = function(first, last) {  
-  this.firstName = ko.observable(first);
-  this.lastName = ko.observable(last);
-
-  this.fullName = ko.pureComputed(function() {
-      // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
-      return this.firstName() + " " + this.lastName();
-  }, this);
-}; 
-
-И, вуаля. Изменение значения любого из input будет провоцировать изменение в span. Вы никогда не писали код для его подключения. Классно, да?
-
-Но подождите, что насчет того, что модель — это единственный источник истины? Откуда ViewModel должна получить свое состояние? Откуда она знает что модель изменилась? Интересные вопросы.
 
 Angular
 
@@ -79,7 +61,6 @@ angular.module('helloApp', [])
 
 Из этого примера похоже, что контроллер имеет состояние и ведет себя как модель, или, возможно, как ViewModel? Предполагая, что модель находится в другом месте, как она синхронизируется с контроллером?
 
-Моя голова начинает немного болеть.
 
 Проблемы с data binding
 
